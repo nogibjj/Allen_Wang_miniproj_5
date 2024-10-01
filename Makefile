@@ -11,3 +11,12 @@ test:
 	python -m pytest -cov=main test_main.py
 
 all: install format lint test
+
+extract:
+	python main.py extract
+
+transform:
+	python main.py transform
+
+query:
+	python main.py "Select * from drinks;"
