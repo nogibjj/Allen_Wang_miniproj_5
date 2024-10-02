@@ -1,60 +1,90 @@
-# Allen_Wang_miniproj_1
+# Allen_Wang_miniproj_5
 
-[![CI](https://github.com/nogibjj/Allen_Wang_miniproj_1/actions/workflows/CICD.yml/badge.svg)](https://github.com/nogibjj/Allen_Wang_miniproj_1/actions/workflows/CICD.yml)
+[![CI](https://github.com/nogibjj/Allen_Wang_miniproj_5/actions/workflows/CICD.yml/badge.svg)](https://github.com/nogibjj/Allen_Wang_miniproj_5/actions/workflows/CICD.yml)
 
 ## Overview
 
-This project includes a Python development environment configured with a `.devcontainer`, a `Makefile` for managing setup, testing, and linting tasks, and a functioning CI/CD pipeline. The main functionality of the project is to print a string in reverse.
+This project demonstrates connecting to a SQL database, performing CRUD operations (Create, Read, Update, Delete), and writing two distinct SQL queries. The project is implemented in Python, with CI/CD setup for testing and validation.
 
 ## Project Structure
 
-- **.devcontainer/**: Contains configuration for a development container to ensure consistency, portability, and isolation. Includes:
-  - `devcontainer.json`: Configuration file for the development container.
-  - `Dockerfile`: Defines the container image for the development environment.
-
-- **Makefile**: Provides commands for setup, testing, and linting:
-  - `make install`: Installs project dependencies.
-  - `make format`: Formats all Python files in the current directory using Black
-  - `make lint`: Lints all Python files (excluding test files) using Pylint.
+- **.devcontainer/**: Configuration for the development container.
+- **Makefile**: Provides commands for setup, formatting, linting, testing, and running SQL queries:
+  - `make install`: Installs dependencies.
+  - `make format`: Formats Python files.
+  - `make lint`: Lints Python files.
   - `make test`: Runs tests.
-  - `make all`: Runs all the tasks in sequence.
+  - `make all`: Runs all tasks (install, format, lint, and test).
+  - `make extract`: Runs the data extraction script.
+  - `make transform`: Transforms data and stores it in the `drink.db` database.
+  - `make query1`: Inserts a new record into the `drink` table.
+  - `make query2`: Updates an existing record in the `drink` table.
+- **.github/workflows/ci.yml**: CI/CD pipeline configuration.
+- **main.py**: Python script to handle data extraction, transformation, and database queries.
+- **README.md**: Setup, usage instructions, and project description.
 
-- **.github/workflows/ci.yml**: Configures CI/CD pipeline to automatically run setup, linting, and tests.
+## CRUD Operations
 
-- **main.py**: Contains a function that prints a string in reverse.
-
-- **README.md**: This file, providing setup and usage instructions.
+- **Create**: Insert new records into the database.
+- bash
+    Python main.py create $(country_name) $(beer_servings) $(spirit_servings) $(wine_servings) $(total_litres_of_pure_alcohol  )
+- **Read**: Select and retrieve data.
+- - bash
+    Python main.py read
+- **Update**: Modify existing records.
+- - bash
+  - Python main.py update $(country_name) $(beer_servings)
+- **Delete**: Remove records from the database.
+- - bash
+  - Python main.py delete $(country_name)
 
 ## Setup
 
-1. **Clone the repository:**
+1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/nogibjj/Allen_Wang_miniproj_1.git
+    git clone https://github.com/nogibjj/Allen_Wang_miniproj_5.git
     cd Allen_Wang_miniproj_1
     ```
 
-2. **Install dependencies:**
+2. **Install dependencies**:
 
     ```bash
     make install
     ```
 
-3. **Format code:**
+3. **Format code**:
 
     ```bash
     make format
     ```
-    ![Alt text](format.png)
-4. **Lint code:**
+
+4. **Lint code**:
 
     ```bash
     make lint
     ```
-   ![Alt text](lint.png)
-5. **Test code:**
+
+5. **Test code**:
 
     ```bash
     make test
     ```
-   ![Alt text](test.png)
+## Demonstration of Database Changes
+
+The following changes were made to the `drink` table in the `drink.db` database through CI/CD and test_main.py:
+
+1. **Deleted** the record for the country **Canada**.
+   ![Updated Database Table](img/canada.png)
+   ![Updated Database Table](img/canada_delete.png)
+
+2. **Updated** the record for the country **USA**:
+   - `beer_servings = 15`
+   - `total_litres_of_pure_alcohol = -0.1`
+   ![Updated Database Table](img/usa.png)
+
+3. **Added** a new record for the country **USB**.
+   ![Updated Database Table](img/usb.png)
+
+4. **Added** a new record for the country **USC**.
+   ![Updated Database Table](img/usc.png)
