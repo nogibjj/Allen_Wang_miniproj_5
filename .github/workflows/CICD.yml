@@ -14,7 +14,7 @@ jobs:
       - name: install packages
         run: make install
       - name: transform
-        run: make transform
+        run: make transform "drink.db" "https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv"
       - name: query1
         run: make query1
       - name: query2
