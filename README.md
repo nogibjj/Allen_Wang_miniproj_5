@@ -15,12 +15,11 @@ This project demonstrates connecting to a SQL database, performing CRUD operatio
   - `make lint`: Lints Python files.
   - `make test`: Runs tests.
   - `make all`: Runs all tasks (install, format, lint, and test).
-  - `make extract`: Runs the data extraction script.
   - `make transform`: Transforms data and stores it in the `drink.db` database.
   - `make query1`: Inserts a new record into the `drink` table.
   - `make query2`: Updates an existing record in the `drink` table.
 - **.github/workflows/ci.yml**: CI/CD pipeline configuration.
-- **main.py**: Python script to handle data extraction, transformation, and database queries.
+- **main.py**: Python script to handle data transformation, and database queries.
 - **README.md**: Setup, usage instructions, and project description.
 
 ## CRUD Operations
