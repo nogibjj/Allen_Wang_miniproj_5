@@ -16,7 +16,7 @@ extract:
 	python main.py extract
 
 transform:
-	python main.py transform
+	python main.py transform  "drink.db" "https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv"
 
 query1:
 	python main.py general "INSERT INTO drink(country,beer_servings,spirit_servings,wine_servings, total_litres_of_pure_alcohol) VALUES(USC, 10,100,1000,0.1) "
