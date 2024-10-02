@@ -1,17 +1,14 @@
 import sys
 import argparse
 from mylib.transform import csv_to_db
-from mylib.query import(
-    update_row,
-    delete_row,
-    create_row,
-    read_all,
-    general
-)
+from mylib.query import update_row, delete_row, create_row, read_all, general
+
 
 def handle_arguments(args):
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=["create", "read", "update", "delete","transform","general"])
+    parser.add_argument(
+        "action", choices=["create", "read", "update", "delete", "transform", "general"]
+    )
     args = parser.parse_args(args[:1])
 
     if args.action == "create":
@@ -27,20 +24,27 @@ def handle_arguments(args):
 
     elif args.action == "delete":
         parser.add_argument("country")
-    
+
     elif args.action == "transform":
         parser.add_argument("name")
         parser.add_argument("url")
-    
+
     elif args.action == "general":
         parser.add_argument("query")
-    
+
     return parser.parse_args(sys.argv[1:])
+
 
 def main():
     args = handle_arguments(sys.argv[1:])
     if args.action == "create":
-        create_row(args.country, args.beer_servings, args.spirit_servings, args.wine_servings, args.total_litres_of_pure_alcohol)
+        create_row(
+            args.country,
+            args.beer_servings,
+            args.spirit_servings,
+            args.wine_servings,
+            args.total_litres_of_pure_alcohol,
+        )
     elif args.action == "read":
         data = read_all()
         for row in data:
@@ -50,11 +54,12 @@ def main():
     elif args.action == "delete":
         delete_row(args.country)
     elif args.action == "transform":
-        csv_to_db(args.name,args.url)
+        csv_to_db(args.name, args.url)
     elif args.action == "general":
         general(args.query)
     else:
         print(f"Unknown action: {args.action}")
+
 
 if __name__ == "__main__":
     main()
