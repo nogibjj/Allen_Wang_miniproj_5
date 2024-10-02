@@ -64,7 +64,7 @@ def test_delete_row():
 
 def test_general():
     result = subprocess.run(
-        ["python", "main.py", "general", "UPDATE drink SET beer_servings = 100 WHERE country = USB"]
+        ["python", "main.py", "general", "UPDATE drink SET beer_servings = 100 WHERE country = USB"],
         capture_output=True,
         text=True,
         check=True,

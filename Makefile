@@ -24,8 +24,5 @@ query1:
 query2:
 	python main.py general "UPDATE drink SET  total_litres_of_pure_alcohol  = -0.1 WHERE country = USA"
 
-trasnform:
-	python main.py transform
-
 
 
