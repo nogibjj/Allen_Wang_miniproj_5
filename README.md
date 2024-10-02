@@ -26,17 +26,25 @@ This project demonstrates connecting to a SQL database, performing CRUD operatio
 ## CRUD Operations
 
 - **Create**: Insert new records into the database.
-- bash
-    Python main.py create $(country_name) $(beer_servings) $(spirit_servings) $(wine_servings) $(total_litres_of_pure_alcohol  )
+    ```bash
+    Python main.py create $(country name) $(beer servings) $(spirit servings) $(wine servings) $(total litres_of_pure_alcohol)
+    ```
+
 - **Read**: Select and retrieve data.
-- - bash
+    ```bash
     Python main.py read
+    ```
+
 - **Update**: Modify existing records.
-- - bash
-  - Python main.py update $(country_name) $(beer_servings)
+    ```bash
+    Python main.py update $(country name) $(beer servings)
+    ```
+
 - **Delete**: Remove records from the database.
-- - bash
-  - Python main.py delete $(country_name)
+    ```bash
+    Python main.py delete $(country name)
+    ```
+
 
 ## Setup
 
@@ -44,7 +52,7 @@ This project demonstrates connecting to a SQL database, performing CRUD operatio
 
     ```bash
     git clone https://github.com/nogibjj/Allen_Wang_miniproj_5.git
-    cd Allen_Wang_miniproj_1
+    cd Allen_Wang_miniproj_5
     ```
 
 2. **Install dependencies**:
@@ -81,7 +89,8 @@ The following changes were made to the `drink` table in the `drink.db` database 
 2. **Updated** the record for the country **USA**:
    - `beer_servings = 15`
    - `total_litres_of_pure_alcohol = -0.1`
-   ![Updated Database Table](img/usa.png)
+  
+    ![Updated Database Table](img/usa.png)
 
 3. **Added** a new record for the country **USB**.
    ![Updated Database Table](img/usb.png)
