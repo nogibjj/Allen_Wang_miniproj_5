@@ -12,9 +12,6 @@ test:
 
 all: install format lint test
 
-extract:
-	python main.py extract
-
 transform:
 	python main.py transform  "drink.db" "https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv"
 
