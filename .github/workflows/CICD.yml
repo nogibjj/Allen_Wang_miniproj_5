@@ -17,12 +17,10 @@ jobs:
         run: make transform
       - name: query1
         run: make query1
-      # - name: query2
-      #   run: make query2
+      - name: query2
+        run: make query2
       - name: lint
         run: make lint
-      - name: test
-        run: make test
       - name: format
         run: make format
       - name: Commit files
@@ -36,3 +34,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+      - name: test
+        run: make test
