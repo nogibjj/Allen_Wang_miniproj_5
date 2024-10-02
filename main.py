@@ -5,12 +5,13 @@ from mylib.query import(
     update_row,
     delete_row,
     create_row,
-    read_all
+    read_all,
+    general
 )
 
 def handle_arguments(args):
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=["create", "read", "update", "delete","transform"])
+    parser.add_argument("action", choices=["create", "read", "update", "delete","transform","general"])
     args = parser.parse_args(args[:1])
 
     if args.action == "create":
@@ -30,7 +31,10 @@ def handle_arguments(args):
     elif args.action == "transform":
         parser.add_argument("name")
         parser.add_argument("url")
-        
+    
+    elif args.action == "general":
+        parser.add_argument("query")
+    
     return parser.parse_args(sys.argv[1:])
 
 def main():
@@ -47,6 +51,8 @@ def main():
         delete_row(args.country)
     elif args.action == "transform":
         csv_to_db(args.name,args.url)
+    elif args.action == "general":
+        general(args.query)
     else:
         print(f"Unknown action: {args.action}")
 

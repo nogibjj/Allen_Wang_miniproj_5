@@ -62,10 +62,20 @@ def test_delete_row():
     )
     assert result.returncode == 0
 
+def test_general():
+    result = subprocess.run(
+        ["python", "main.py", "general", "UPDATE drink SET beer_servings = 100 WHERE country = USB"]
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert result.returncode == 0
+
 if __name__ == "__main__":
 
     test_transform()
     test_create_row()
     test_read_all()
     test_update_row()
-    #test_delete_row()
+    test_delete_row()
+    test_general()

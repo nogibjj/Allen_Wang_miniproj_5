@@ -49,3 +49,18 @@ def delete_row(country):
         conn.close()
     except sqlite3.Error as e:
         print(e)
+
+
+def general(query):
+    try:
+        conn = sqlite3.connect("drink.db")
+        cursor = conn.cursor()
+        cursor.execute(query)
+        if query.strip().lower().startswith("select"):
+            results = cursor.fetchall()
+            conn.close()
+            return results
+        conn.commit()
+        conn.close()
+    except sqlite3.Error as e:
+        print(e)
